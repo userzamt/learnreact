@@ -33,18 +33,11 @@ class App extends Component {
 
   render() {
     console.log("render");
-    const {cars, pageTitle} = this.state;
+    
+    let cars = null;
 
-    return (
-      <>
-        <h1>{pageTitle}</h1>
-
-        <button onClick={this.toggleCarsHandler}>Toggle cars</button>
-
-        <div className='container'>
-          {
-            this.state.isShowed ?
-              cars.map((car, index) => 
+    if(this.state.isShowed){
+      cars = this.state.cars.map((car, index) => 
                 <Car 
                     key={index}
                     title={car.title} 
@@ -52,8 +45,17 @@ class App extends Component {
                     referens={car.referens}
                     onChangeTitle={this.changeTitleHandler.bind(this, car.title)} />
               )
-            : null
-          }
+    } 
+      
+
+    return (
+      <>
+        <h1>{this.state.pageTitle}</h1>
+
+        <button onClick={this.toggleCarsHandler}>Toggle cars</button>
+
+        <div className='container'>
+          { cars }
         </div>
       </>
     );
