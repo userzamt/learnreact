@@ -11,7 +11,8 @@ class App extends Component {
       {title: "ПАЗ", description: "Павловский автобусный завод", referens: "http://paz-bus.ru"},
       {title: "ЗМЗ", description: "Заволжский моторный завод", referens: "http://www.zmz.ru"}
     ],
-    pageTitle: "Завод твоя судьба"
+    pageTitle: "Завод твоя судьба",
+    isShowed: false
   };
 
   changeTitleHandler = (nTitle) => {
@@ -22,16 +23,15 @@ class App extends Component {
     });
   };
 
-  handleInput = (event) => {
-    console.log("input", event.target.value);
+  toggleCarsHandler = () => {
+    console.log("toggle");
 
     this.setState({
-      pageTitle: event.target.value
+      isShowed: !this.state.isShowed
     });
   };
 
   render() {
-
     console.log("render");
     const {cars, pageTitle} = this.state;
 
@@ -39,18 +39,21 @@ class App extends Component {
       <>
         <h1>{pageTitle}</h1>
 
-        <input type="text" onChange={this.handleInput} />
-        <button onClick={this.changeTitleHandler.bind(this, 'Change !!')}>Change title</button>
+        <button onClick={this.toggleCarsHandler}>Toggle cars</button>
 
         <div className='container'>
-          {cars.map((car, index) => 
-            <Car 
-                key={index}
-                title={car.title} 
-                description={car.description}
-                referens={car.referens}
-                onChangeTitle={this.changeTitleHandler.bind(this, car.title)} />
-          )}
+          {
+            this.state.isShowed ?
+              cars.map((car, index) => 
+                <Car 
+                    key={index}
+                    title={car.title} 
+                    description={car.description}
+                    referens={car.referens}
+                    onChangeTitle={this.changeTitleHandler.bind(this, car.title)} />
+              )
+            : null
+          }
         </div>
       </>
     );
