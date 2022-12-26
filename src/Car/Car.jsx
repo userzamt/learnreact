@@ -8,6 +8,7 @@ export default (props) =>{
         <article className="block">
             <h2>{props.title}</h2>
             <p>{props.description}</p>
+            <button onClick={props.onChangeTitle}>Change</button>
             <small>{props.referens}</small>
         </article>
     );

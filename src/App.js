@@ -14,14 +14,19 @@ class App extends Component {
     pageTitle: "Завод твоя судьба"
   };
 
-  changeTitleHandler = (props) => {
+  changeTitleHandler = (nTitle) => {
     console.log("clicked");
-
-    const {pageTitle: oldTitle} = this.state;
-    let nTitle = oldTitle + (new Date()).getTime();
 
     this.setState({
       pageTitle: nTitle
+    });
+  };
+
+  handleInput = (event) => {
+    console.log("input", event.target.value);
+
+    this.setState({
+      pageTitle: event.target.value
     });
   };
 
@@ -34,12 +39,25 @@ class App extends Component {
       <>
         <h1>{pageTitle}</h1>
 
-        <button onClick={this.changeTitleHandler}>Change title</button>
+        <input type="text" onChange={this.handleInput} />
+        <button onClick={this.changeTitleHandler.bind(this, 'Change !!')}>Change title</button>
 
         <div className='container'>        
-          <Car title={cars[0].title} description={cars[0].description} referens={cars[0].referens} />
-          <Car title={cars[1].title} description={cars[1].description} referens={cars[1].referens} />
-          <Car title={cars[2].title} description={cars[2].description} referens={cars[2].referens} />        
+          <Car 
+            title={cars[0].title} 
+            description={cars[0].description} 
+            referens={cars[0].referens} 
+            onChangeTitle={this.changeTitleHandler.bind(this, cars[0].title)} />
+          <Car 
+            title={cars[1].title} 
+            description={cars[1].description} 
+            referens={cars[1].referens} 
+            onChangeTitle={ () => this.changeTitleHandler(cars[1].title) } />
+          <Car 
+            title={cars[2].title} 
+            description={cars[2].description} 
+            referens={cars[2].referens} 
+            onChangeTitle={ () => this.changeTitleHandler(cars[2].title) } />        
         </div>
       </>
     );
