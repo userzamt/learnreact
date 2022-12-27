@@ -5,11 +5,7 @@ import "./Car.css";
 export default (props) =>{
     console.log("Car");
     return(
-        <article 
-            className="block" 
-            style={{
-                boxShadow: "0 10px 7px rgba(0,0,0,0.7)"
-        }}>
+        <article className="Car">
             <h2>{props.title}</h2>
             <p>{props.description}</p>
             <input type="text"  onChange={props.onChangeName} value={props.title}/>

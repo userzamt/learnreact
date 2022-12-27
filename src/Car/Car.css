@@ -1,9 +1,10 @@
-.block {
+.Car {
     width: 300px;
     border: thin solid #333;
     border-radius: 10px;
     padding: 7px;
     display: flex;
     flex-direction: column;
-    gap: 7px;;
+    gap: 7px;
+    box-shadow: 0 10px 5px 0 rgba(0, 0, 0, 0.16);
 }
