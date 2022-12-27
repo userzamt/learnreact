@@ -3,4 +3,7 @@
     border: thin solid #333;
     border-radius: 10px;
     padding: 7px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;;
 }

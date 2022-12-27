@@ -31,6 +31,20 @@ class App extends Component {
     });
   };
 
+  onChangeName = (nName, index) => {
+    console.log("change name", nName, index);
+
+    const car = this.state.cars[index];
+    const cars = [...this.state.cars];
+    
+    car.title = nName;
+    cars[index] = car;
+
+    this.setState({
+      cars
+    });
+  };
+
   render() {
     console.log("render");
     
@@ -43,7 +57,7 @@ class App extends Component {
                     title={car.title} 
                     description={car.description}
                     referens={car.referens}
-                    onChangeTitle={this.changeTitleHandler.bind(this, car.title)} />
+                    onChangeName={ event => this.onChangeName(event.target.value, index)} />
               )
     } 
       
