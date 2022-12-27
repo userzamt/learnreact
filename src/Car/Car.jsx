@@ -9,6 +9,7 @@ export default (props) =>{
             <h2>{props.title}</h2>
             <p>{props.description}</p>
             <input type="text"  onChange={props.onChangeName} value={props.title}/>
+            <button onClick={props.onDelete}>Delete</button>
             <small>{props.referens}</small>
         </article>
     );

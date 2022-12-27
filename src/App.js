@@ -45,6 +45,15 @@ class App extends Component {
     });
   };
 
+  deleteHandler(index) {
+    const cars = this.state.cars.concat();
+    cars.splice(index, 1);
+
+    this.setState({
+      cars
+    });
+  }
+
   render() {
     console.log("render");
     
@@ -57,7 +66,8 @@ class App extends Component {
                     title={car.title} 
                     description={car.description}
                     referens={car.referens}
-                    onChangeName={ event => this.onChangeName(event.target.value, index)} />
+                    onChangeName={ event => this.onChangeName(event.target.value, index)}
+                    onDelete={this.deleteHandler.bind(this, index)} />
               )
     } 
       
