@@ -26,6 +26,11 @@ class Car extends React.Component {
         console.log("car componentDidUpdate");
     }
 
+    //удаление
+    componentWillUnmount() {
+        console.log("car componentWillUnmount");
+    }
+
     render() {
         console.log("car render");
         const carClasses = ["input"];
