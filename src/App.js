@@ -6,6 +6,7 @@ import Car from './Car/Car';
 class App extends Component {
 
   constructor(props) {
+    console.log("constructor app");
     super(props);
 
     this.state = {
@@ -58,6 +59,15 @@ class App extends Component {
     this.setState({
       cars
     });
+  }
+
+  // Жизненный цикл
+  componentWillMount() {
+    console.log("will mount");
+  }
+
+  componentDidMount() {
+    console.log("did mount");
   }
 
   render() {
