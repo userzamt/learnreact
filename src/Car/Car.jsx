@@ -5,8 +5,29 @@ import "./Car.css";
 
 class Car extends React.Component {
 
+    //Жизненный цикл
+
+    componentWillReceiveProps(nextProps) {
+        console.log("car componentWillReceiveProps", nextProps);
+    }
+
+    //особенный
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log("car shouldComponentUpdate", nextProps, nextState);
+        
+        return nextProps.title.trim() !== this.props.title.trim();
+    }
+
+    componentWillUpdate(nextProps, nextState) {
+        console.log("car componentWillUpdate", nextProps, nextState);
+    }
+
+    componentDidUpdate() {
+        console.log("car componentDidUpdate");
+    }
+
     render() {
-        // console.log("Car");
+        console.log("car render");
         const carClasses = ["input"];
 
         if(this.props.title !== ""){
