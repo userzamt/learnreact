@@ -5,15 +5,21 @@ import Car from './Car/Car';
 
 class App extends Component {
 
-  state = {
-    cars: [
-      {title: "ГАЗ", description: "Горьковский автомобильный завод", referens: "https://gazgroup.ru"},
-      {title: "ПАЗ", description: "Павловский автобусный завод", referens: "http://paz-bus.ru"},
-      {title: "ЗМЗ", description: "Заволжский моторный завод", referens: "http://www.zmz.ru"}
-    ],
-    pageTitle: "Завод твоя судьба",
-    isShowed: false
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      cars: [
+        {title: "ГАЗ", description: "Горьковский автомобильный завод", referens: "https://gazgroup.ru"},
+        {title: "ПАЗ", description: "Павловский автобусный завод", referens: "http://paz-bus.ru"},
+        {title: "ЗМЗ", description: "Заволжский моторный завод", referens: "http://www.zmz.ru"}
+      ],
+      pageTitle: "Завод твоя судьба",
+      isShowed: false
+    };
+
+  }
+  
 
   changeTitleHandler = (nTitle) => {
     console.log("clicked");
