@@ -2,33 +2,39 @@
 import React from "react";
 import "./Car.css";
 
-export default (props) =>{
-    // console.log("Car");
-    const carClasses = ["input"];
 
-    if(props.title !== ""){
-        carClasses.push("green");
-    } else {
-        carClasses.push("red");
-        carClasses.push("bold");
+class Car extends React.Component {
+
+    render() {
+        // console.log("Car");
+        const carClasses = ["input"];
+
+        if(this.props.title !== ""){
+            carClasses.push("green");
+        } else {
+            carClasses.push("red");
+            carClasses.push("bold");
+        }
+
+        if(this.props.title.length > 3) {
+            carClasses.push("bold");
+        }
+
+        return(
+            <article className="Car">
+                <h2>{this.props.title}</h2>
+                <p>{this.props.description}</p>
+                <input 
+                    type="text"  
+                    onChange={this.props.onChangeName} 
+                    value={this.props.title}
+                    className={carClasses.join(" ")}
+                />
+                <button onClick={this.props.onDelete}>Delete</button>
+                <small>{this.props.referens}</small>
+            </article>
+        );
     }
+}
 
-    if(props.title.length > 3) {
-        carClasses.push("bold");
-    }
-
-    return(
-        <article className="Car">
-            <h2>{props.title}</h2>
-            <p>{props.description}</p>
-            <input 
-                type="text"  
-                onChange={props.onChangeName} 
-                value={props.title}
-                className={carClasses.join(" ")}
-            />
-            <button onClick={props.onDelete}>Delete</button>
-            <small>{props.referens}</small>
-        </article>
-    );
-};
+export default Car;
