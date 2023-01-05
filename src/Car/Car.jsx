@@ -21,6 +21,14 @@ class Car extends React.Component {
     componentWillUpdate(nextProps, nextState) {
         console.log("car componentWillUpdate", nextProps, nextState);
     }
+    
+    //dom дерево до изменений
+    static getDerivedStateFromProps(nextProps, prevState) {
+        console.log("car getDrivedStateFromProps", nextProps, prevState);
+
+        return prevState;
+    }
+
 
     componentDidUpdate() {
         console.log("car componentDidUpdate");
