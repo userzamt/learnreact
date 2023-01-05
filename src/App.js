@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import Car from './Car/Car';
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import Counter from './Counter/Counter';
 
 
 class App extends Component {
@@ -20,8 +21,7 @@ class App extends Component {
       isShowed: false
     };
 
-  }
-  
+  }  
 
   changeTitleHandler = (nTitle) => {
     console.log("clicked");
@@ -94,6 +94,9 @@ class App extends Component {
       <>
         {/* <h1>{this.state.pageTitle}</h1> */}
         <h1>{this.props.title}</h1>
+
+        <Counter />
+        <div className='separator'></div>
 
         <button onClick={this.toggleCarsHandler}>Toggle cars</button>
 
