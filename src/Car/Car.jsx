@@ -7,9 +7,9 @@ class Car extends React.Component {
 
     //Жизненный цикл
 
-    componentWillReceiveProps(nextProps) {
-        console.log("car componentWillReceiveProps", nextProps);
-    }
+    // componentWillReceiveProps(nextProps) {
+    //     console.log("car componentWillReceiveProps", nextProps);
+    // }
 
     //особенный
     shouldComponentUpdate(nextProps, nextState) {
@@ -18,16 +18,16 @@ class Car extends React.Component {
         return nextProps.title.trim() !== this.props.title.trim();
     }
 
-    componentWillUpdate(nextProps, nextState) {
-        console.log("car componentWillUpdate", nextProps, nextState);
-    }
+    // componentWillUpdate(nextProps, nextState) {
+    //     console.log("car componentWillUpdate", nextProps, nextState);
+    // }
     
     //dom дерево до изменений
-    static getDerivedStateFromProps(nextProps, prevState) {
-        console.log("car getDrivedStateFromProps", nextProps, prevState);
+    // static getDerivedStateFromProps(nextProps, prevState) {
+    //     console.log("car getDrivedStateFromProps", nextProps, prevState);
 
-        return prevState;
-    }
+    //     return prevState;
+    // }
 
 
     componentDidUpdate() {
@@ -41,6 +41,7 @@ class Car extends React.Component {
 
     render() {
         console.log("car render");
+
         const carClasses = ["input"];
 
         if(this.props.title !== ""){
@@ -52,6 +53,8 @@ class Car extends React.Component {
 
         if(this.props.title.length > 3) {
             carClasses.push("bold");
+
+            throw new Error("Big length");
         }
 
         return(

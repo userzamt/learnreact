@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Car from './Car/Car';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 
 class App extends Component {
@@ -12,8 +13,8 @@ class App extends Component {
     this.state = {
       cars: [
         {title: "ГАЗ", description: "Горьковский автомобильный завод", referens: "https://gazgroup.ru"},
-        // {title: "ПАЗ", description: "Павловский автобусный завод", referens: "http://paz-bus.ru"},
-        // {title: "ЗМЗ", description: "Заволжский моторный завод", referens: "http://www.zmz.ru"}
+        {title: "ПАЗ", description: "Павловский автобусный завод", referens: "http://paz-bus.ru"},
+        {title: "ЗМЗ", description: "Заволжский моторный завод", referens: "http://www.zmz.ru"}
       ],
       pageTitle: "Завод твоя судьба",
       isShowed: false
@@ -62,9 +63,9 @@ class App extends Component {
   }
 
   // Жизненный цикл
-  componentWillMount() {
-    console.log("will mount");
-  }
+  // componentWillMount() {
+  //   console.log("will mount");
+  // }
 
   componentDidMount() {
     console.log("did mount");
@@ -77,13 +78,14 @@ class App extends Component {
 
     if(this.state.isShowed){
       cars = this.state.cars.map((car, index) => 
-                <Car 
-                    key={index}
-                    title={car.title} 
-                    description={car.description}
-                    referens={car.referens}
-                    onChangeName={ event => this.onChangeName(event.target.value, index)}
-                    onDelete={this.deleteHandler.bind(this, index)} />
+                <ErrorBoundary key={index}>
+                  <Car                       
+                      title={car.title} 
+                      description={car.description}
+                      referens={car.referens}
+                      onChangeName={ event => this.onChangeName(event.target.value, index)}
+                      onDelete={this.deleteHandler.bind(this, index)} />
+                </ErrorBoundary>
               )
     } 
       
