@@ -14,8 +14,9 @@ class App extends Component {
     this.state = {
       cars: [
         {title: "ГАЗ", description: "Горьковский автомобильный завод", referens: "https://gazgroup.ru"},
-        // {title: "ПАЗ", description: "Павловский автобусный завод", referens: "http://paz-bus.ru"},
-        // {title: "ЗМЗ", description: "Заволжский моторный завод", referens: "http://www.zmz.ru"}
+        {title: "ПАЗ", description: "Павловский автобусный завод", referens: "http://paz-bus.ru"},
+        {title: "ЗМЗ", description: "Заволжский моторный завод", referens: "http://www.zmz.ru"},
+        // {title: 1111111, description: 0.1, referens: "http://www.zmz.ru"}
       ],
       pageTitle: "Завод твоя судьба",
       isShowed: false

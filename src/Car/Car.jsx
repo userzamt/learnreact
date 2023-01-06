@@ -1,9 +1,11 @@
 import React from "react";
 import styles from "./Car.module.css";
 import withClass from "../hoc/withClass";
+import PropTypes from "prop-types";
 
 
 class Car extends React.Component {
+
     render() {
         const carClasses = [styles.input];
 
@@ -36,5 +38,13 @@ class Car extends React.Component {
         );
     }
 }
+
+Car.propTypes = {
+    title: PropTypes.string,
+    description: PropTypes.string,
+    onChange: PropTypes.func,
+    onDelete: PropTypes.func,
+    referens: PropTypes.string
+};
 
 export default withClass(Car, styles.Car);
