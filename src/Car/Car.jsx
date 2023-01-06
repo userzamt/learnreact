@@ -1,64 +1,27 @@
-/* eslint-disable import/no-anonymous-default-export */
 import React from "react";
-import "./Car.css";
+import styles from "./Car.module.css";
+import withClass from "../hoc/withClass";
 
 
 class Car extends React.Component {
-
-    //Жизненный цикл
-
-    // componentWillReceiveProps(nextProps) {
-    //     console.log("car componentWillReceiveProps", nextProps);
-    // }
-
-    //особенный
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log("car shouldComponentUpdate", nextProps, nextState);
-        
-        return nextProps.title.trim() !== this.props.title.trim();
-    }
-
-    // componentWillUpdate(nextProps, nextState) {
-    //     console.log("car componentWillUpdate", nextProps, nextState);
-    // }
-    
-    //dom дерево до изменений
-    // static getDerivedStateFromProps(nextProps, prevState) {
-    //     console.log("car getDrivedStateFromProps", nextProps, prevState);
-
-    //     return prevState;
-    // }
-
-
-    componentDidUpdate() {
-        console.log("car componentDidUpdate");
-    }
-
-    //удаление
-    componentWillUnmount() {
-        console.log("car componentWillUnmount");
-    }
-
     render() {
-        console.log("car render");
+        const carClasses = [styles.input];
 
-        const carClasses = ["input"];
+        console.log(carClasses, styles);
 
         if(this.props.title !== ""){
-            carClasses.push("green");
+            carClasses.push(styles.green);
         } else {
-            carClasses.push("red");
-            carClasses.push("bold");
+            carClasses.push(styles.red);
+            carClasses.push(styles.bold);
         }
 
         if(this.props.title.length > 3) {
-            carClasses.push("bold");
-
-            throw new Error("Big length");
+            carClasses.push(styles.bold);
         }
 
         return(
-            <article className="Car">
+            <>
                 <h2>{this.props.title}</h2>
                 <p>{this.props.description}</p>
                 <input 
@@ -69,9 +32,9 @@ class Car extends React.Component {
                 />
                 <button onClick={this.props.onDelete}>Delete</button>
                 <small>{this.props.referens}</small>
-            </article>
+            </>
         );
     }
 }
 
-export default Car;
+export default withClass(Car, styles.Car);
