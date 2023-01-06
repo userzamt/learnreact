@@ -8,16 +8,20 @@ export default class Counter extends React.Component {
         count: 0
     };
 
-    addCounter = () => {
-        this.setState({count: this.state.count + 1});
-    }
+    changeCounter = (val) => {
+        this.setState((prevState) => {
+            return {
+                count: prevState.count + val
+            };
+        });
+    } 
 
     render() {
         return (
             <Auxiliary>
                 <h2>Counter: {this.state.count}</h2>
-                <button className="addButton" onClick={this.addCounter}>+</button>
-                <button className="subButton" onClick={() => this.setState({count: this.state.count - 1})}>-</button>
+                <button className="addButton" onClick={() => this.changeCounter(1)}>+</button>
+                <button className="subButton" onClick={() => this.changeCounter(-1)}>-</button>
             </Auxiliary>
         );
     };
