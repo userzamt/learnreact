@@ -1,9 +1,11 @@
 .addButton {
     font-size: x-large;
+    font-family: monospace;
     background-color: #34bf49;
 }
 
 .subButton {
     font-size: x-large;
+    font-family: monospace;
     background-color: #ff4c4c;
 }

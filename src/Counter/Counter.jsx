@@ -1,5 +1,6 @@
 import React from "react";
 import "./Counter.css";
+import Auxiliary from "../hoc/Auxiliary";
 
 
 export default class Counter extends React.Component {
@@ -12,10 +13,12 @@ export default class Counter extends React.Component {
     }
 
     render() {
-        return [
-            <h2 key={1}>Counter: {this.state.count}</h2>,
-            <button key={2} className="addButton" onClick={this.addCounter}>+</button>,
-            <button key={3} className="subButton" onClick={() => this.setState({count: this.state.count - 1})}>-</button>
-        ];
+        return (
+            <Auxiliary>
+                <h2>Counter: {this.state.count}</h2>
+                <button className="addButton" onClick={this.addCounter}>+</button>
+                <button className="subButton" onClick={() => this.setState({count: this.state.count - 1})}>-</button>
+            </Auxiliary>
+        );
     };
 };
