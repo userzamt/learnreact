@@ -80,7 +80,8 @@ class App extends Component {
     if(this.state.isShowed){
       cars = this.state.cars.map((car, index) => 
                 <ErrorBoundary key={index}>
-                  <Car                       
+                  <Car
+                      index={index}                       
                       title={car.title} 
                       description={car.description}
                       referens={car.referens}
