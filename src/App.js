@@ -5,6 +5,8 @@ import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 import Counter from './Counter/Counter';
 
 
+export const ClikedContext = React.createContext(false);
+
 class App extends Component {
 
   constructor(props) {
@@ -12,6 +14,7 @@ class App extends Component {
     super(props);
 
     this.state = {
+      cliked: false,
       cars: [
         {title: "ГАЗ", description: "Горьковский автомобильный завод", referens: "https://gazgroup.ru"},
         {title: "ПАЗ", description: "Павловский автобусный завод", referens: "http://paz-bus.ru"},
@@ -97,10 +100,14 @@ class App extends Component {
         {/* <h1>{this.state.pageTitle}</h1> */}
         <h1>{this.props.title}</h1>
 
-        <Counter />
+        <ClikedContext.Provider value={this.state.cliked}>
+          <Counter />       
+        </ClikedContext.Provider>
+
         <div className='separator'></div>
 
         <button onClick={this.toggleCarsHandler}>Toggle cars</button>
+        <button onClick={() => this.setState({cliked: true})}>Change cliked</button>
 
         <div className='container'>
           { cars }
